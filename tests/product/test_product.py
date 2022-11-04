@@ -16,7 +16,7 @@ def product_info():
 
 
 def test_cria_produto(product_info):
-    product = Product(*product_info.values())
+    product = Product(**product_info)
     assert product.id == product_info["id"]
     assert product.nome_do_produto == product_info["nome_do_produto"]
     assert product.nome_da_empresa == product_info["nome_da_empresa"]

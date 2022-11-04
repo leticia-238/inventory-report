@@ -16,7 +16,7 @@ def product_info():
 
 
 def test_relatorio_produto(product_info):
-    product = Product(*product_info.values())
+    product = Product(**product_info)
     assert product.__repr__() == (
         "O produto Nicotine Polacrilex"
         " fabricado em 2021-02-18"
