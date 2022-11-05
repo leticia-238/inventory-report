@@ -25,15 +25,18 @@ class Inventory:
         return content
 
     @classmethod
-    def import_data(cls, path, report_type):
+    def read_file(cls, path):
         file_extension = path.split(".")[1]
-        inventory = []
         if file_extension == "csv":
-            inventory = cls.read_csv(path)
+            return cls.read_csv(path)
         elif file_extension == "json":
-            inventory = cls.read_json(path)
+            return cls.read_json(path)
         elif file_extension == "xml":
-            inventory = cls.read_xml(path)
+            return cls.read_xml(path)
+
+    @classmethod
+    def import_data(cls, path, report_type):
+        inventory = cls.read_file(path)
 
         if report_type == "simples":
             return SimpleReport.generate(inventory)
